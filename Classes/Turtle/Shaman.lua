@@ -153,7 +153,6 @@ ClassSpellsByLevel["SHAMAN"] = {
 		{id=10447,name="Flame Shock",subText="Rank 4",level=40,icon="Interface\\Icons\\Spell_Fire_FlameShock",school="Elemental Combat",requiredIds={8053}},
 		{id=930,name="Chain Lightning",subText="Rank 2",level=40,icon="Interface\\Icons\\Spell_Nature_ChainLightning",school="Elemental Combat",requiredIds={421}},
 		{id=6365,name="Searing Totem",subText="Rank 4",level=40,icon="Interface\\Icons\\Spell_Fire_SearingTotem",school="Elemental Combat",requiredIds={6364}},
-		{id=16190,name="Mana Tide Totem",subText="Rank 1",level=40,icon="Interface\\Icons\\Spell_Frost_SummonWaterElemental",school="Restoration"},
 		{id=45505,name="Feral Spirit",subText="Rank 1",level=40,icon="Interface\\Icons\\Spell_Shaman_FeralSpirit",races={"ORC"},school="Enhancement"},
 		{id=45525,name="Earth Shield",subText="Rank 1",level=40,icon="Interface\\Icons\\Spell_Nature_SkinofEarth",school="Enhancement"},
 		{id=45534,name="Lava Lash",subText="Rank 1",level=40,icon="Interface\\Icons\\Ability_Shaman_Lavalash",school="Enhancement"},
@@ -189,7 +188,6 @@ ClassSpellsByLevel["SHAMAN"] = {
 		{id=2860,name="Chain Lightning",subText="Rank 3",level=48,icon="Interface\\Icons\\Spell_Nature_ChainLightning",school="Elemental Combat",requiredIds={930}},
 		{id=16355,name="Frostbrand Weapon",subText="Rank 4",level=48,icon="Interface\\Icons\\Spell_Frost_FrostBrand",school="Enhancement",requiredIds={10456}},
 		{id=10526,name="Flametongue Totem",subText="Rank 3",level=48,icon="Interface\\Icons\\Spell_Nature_GuardianWard",school="Enhancement",requiredIds={8249}},
-		{id=17354,name="Mana Tide Totem",subText="Rank 2",level=48,icon="Interface\\Icons\\Spell_Frost_SummonWaterElemental",school="Restoration",requiredIds={16190}},
 		{id=20776,name="Ancestral Spirit",subText="Rank 4",level=48,icon="Interface\\Icons\\Spell_Nature_Regenerate",school="Restoration",requiredIds={20610}},
 		{id=51525,name="Earth Shield",subText="Rank 2",level=48,icon="Interface\\Icons\\Spell_Nature_SkinofEarth",school="Enhancement",requiredIds={45525}}
 	},
@@ -230,7 +228,6 @@ ClassSpellsByLevel["SHAMAN"] = {
 		{id=10538,name="Fire Resistance Totem",subText="Rank 3",level=58,icon="Interface\\Icons\\Spell_FireResistanceTotem_01",school="Enhancement",requiredIds={10537}},
 		{id=16356,name="Frostbrand Weapon",subText="Rank 5",level=58,icon="Interface\\Icons\\Spell_Frost_FrostBrand",school="Enhancement",requiredIds={16355}},
 		{id=16387,name="Flametongue Totem",subText="Rank 4",level=58,icon="Interface\\Icons\\Spell_Nature_GuardianWard",school="Enhancement",requiredIds={10526}},
-		{id=17359,name="Mana Tide Totem",subText="Rank 3",level=58,icon="Interface\\Icons\\Spell_Frost_SummonWaterElemental",school="Restoration",requiredIds={17354}},
 		{id=51536,name="Water Shield",subText="Rank 5",level=58,icon="Interface\\Icons\\Ability_Shaman_WaterShield",school="Enhancement",requiredIds={51535}}
 	},
 	[60] = {

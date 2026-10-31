@@ -39,13 +39,6 @@ for (const file of fs.readdirSync(dir).filter(file => file.endsWith('.lua')).sor
     groups.get(spell.chain).push(spell);
   }
   for (const [name, chain] of groups) {
-    // 6554 is an isolated, explicitly obsolete client record, not a rank of current Pummel.
-    if (name === 'zzOLD Pummel') {
-      assert.equal(chain.length, 1);
-      assert.equal(chain[0].id, 6554);
-      assert.equal(chain[0].required.length, 0);
-      continue;
-    }
     const maxRank = Math.max(...chain.map(s => s.rank));
     for (let rank = 1; rank <= maxRank; rank++) {
       assert(chain.some(s => s.rank === rank), `${file}: ${name} is missing rank ${rank}`);

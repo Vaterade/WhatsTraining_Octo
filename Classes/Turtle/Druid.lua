@@ -28,8 +28,6 @@ OverridenSpells["DRUID"] = {
 	[9754] = {779,780,769},
 	[9821] = {1850},
 	[9823] = {9005},
-	[9824] = {9007},
-	[9826] = {9007,9824},
 	[9827] = {9005,9823},
 	[9829] = {5221,6800,8992},
 	[9830] = {5221,6800,8992,9829},
@@ -194,7 +192,6 @@ ClassSpellsByLevel["DRUID"] = {
 	[36] = {
 		{id=6793,name="Tiger's Fury",subText="Rank 2",level=36,icon="Interface\\Icons\\Ability_Mount_JungleTiger",school="Feral Combat",requiredIds={5217}},
 		{id=9005,name="Pounce",subText="Rank 1",level=36,icon="Interface\\Icons\\Ability_Druid_SupriseAttack",school="Feral Combat"},
-		{id=9007,name="Pounce Bleed",subText="Rank 1",level=36,icon="Interface\\Icons\\Ability_Druid_SupriseAttack",school="Feral Combat"},
 		{id=9493,name="Rip",subText="Rank 3",level=36,icon="Interface\\Icons\\Ability_GhoulFrenzy",school="Feral Combat",requiredIds={9492}},
 		{id=8941,name="Regrowth",subText="Rank 5",level=36,icon="Interface\\Icons\\Spell_Nature_ResistNature",school="Restoration",requiredIds={8940}},
 		{id=22842,name="Frenzied Regeneration",subText="Rank 1",level=36,icon="Interface\\Icons\\Ability_BullRush",school="Feral Combat"}
@@ -222,7 +219,6 @@ ClassSpellsByLevel["DRUID"] = {
 		{id=20742,name="Rebirth",subText="Rank 3",level=40,icon="Interface\\Icons\\Spell_Nature_Reincarnation",school="Restoration",requiredIds={20739}},
 		{id=22827,name="Ferocious Bite",subText="Rank 3",level=40,icon="Interface\\Icons\\Ability_Druid_FerociousBite",school="Feral Combat",requiredIds={22568}},
 		{id=24905,name="Moonkin Form (Passive)",subText="Passive",level=40,icon="Interface\\Icons\\Spell_Nature_ForceOfNature",school="Balance"},
-		{id=24907,name="Moonkin Aura",subText="",level=40,icon="Interface\\Icons\\Spell_Nature_MoonGlow",school="Balance"},
 		{id=24975,name="Insect Swarm",subText="Rank 3",level=40,icon="Interface\\Icons\\Spell_Nature_InsectSwarm",school="Balance",requiredIds={24974}}
 	},
 	[42] = {
@@ -247,7 +243,6 @@ ClassSpellsByLevel["DRUID"] = {
 		{id=8983,name="Bash",subText="Rank 3",level=46,icon="Interface\\Icons\\Ability_Druid_Bash",school="Feral Combat",requiredIds={6798}},
 		{id=9821,name="Dash",subText="Rank 2",level=46,icon="Interface\\Icons\\Ability_Druid_Dash",school="Feral Combat",requiredIds={1850}},
 		{id=9823,name="Pounce",subText="Rank 2",level=46,icon="Interface\\Icons\\Ability_Druid_SupriseAttack",school="Feral Combat",requiredIds={9005}},
-		{id=9824,name="Pounce Bleed",subText="Rank 2",level=46,icon="Interface\\Icons\\Ability_Druid_SupriseAttack",school="Feral Combat",requiredIds={9007}},
 		{id=9829,name="Shred",subText="Rank 4",level=46,icon="Interface\\Icons\\Spell_Shadow_VampiricAura",school="Feral Combat",requiredIds={8992}},
 		{id=9839,name="Rejuvenation",subText="Rank 8",level=46,icon="Interface\\Icons\\Spell_Nature_Rejuvenation",school="Restoration",requiredIds={8910}},
 		{id=8905,name="Wrath",subText="Rank 7",level=46,icon="Interface\\Icons\\Spell_Nature_AbolishMagic",school="Balance",requiredIds={6780}},
@@ -290,12 +285,10 @@ ClassSpellsByLevel["DRUID"] = {
 		{id=9907,name="Faerie Fire",subText="Rank 4",level=54,icon="Interface\\Icons\\Spell_Nature_FaerieFire",school="Balance",requiredIds={9749}},
 		{id=9912,name="Wrath",subText="Rank 8",level=54,icon="Interface\\Icons\\Spell_Nature_AbolishMagic",school="Balance",requiredIds={8905}},
 		{id=9901,name="Soothe Animal",subText="Rank 3",level=54,icon="Interface\\Icons\\Ability_Hunter_BeastSoothe",school="Balance",requiredIds={8955}},
-		{id=17392,name="Faerie Fire (Feral)",subText="Rank 4",level=54,icon="Interface\\Icons\\Spell_Nature_FaerieFire",school="Feral Combat",requiredIds={17391}},
-		{id=45969,name="Shred",subText="Rank 6",level=54,icon="Interface\\Icons\\Spell_Shadow_VampiricAura",school="Feral Combat",requiredIds={9830}}
+		{id=17392,name="Faerie Fire (Feral)",subText="Rank 4",level=54,icon="Interface\\Icons\\Spell_Nature_FaerieFire",school="Feral Combat",requiredIds={17391}}
 	},
 	[56] = {
 		{id=9827,name="Pounce",subText="Rank 3",level=56,icon="Interface\\Icons\\Ability_Druid_SupriseAttack",school="Feral Combat",requiredIds={9823}},
-		{id=9826,name="Pounce Bleed",subText="Rank 3",level=56,icon="Interface\\Icons\\Ability_Druid_SupriseAttack",school="Feral Combat",requiredIds={9824}},
 		{id=9889,name="Healing Touch",subText="Rank 10",level=56,icon="Interface\\Icons\\Spell_Nature_HealingTouch",school="Restoration",requiredIds={9888}},
 		{id=22829,name="Ferocious Bite",subText="Rank 5",level=56,icon="Interface\\Icons\\Ability_Druid_FerociousBite",school="Feral Combat",requiredIds={22828}},
 		{id=22896,name="Frenzied Regeneration",subText="Rank 3",level=56,icon="Interface\\Icons\\Ability_BullRush",school="Feral Combat",requiredIds={22895}}
@@ -328,6 +321,7 @@ ClassSpellsByLevel["DRUID"] = {
 		{id=31018,name="Ferocious Bite",subText="Rank 6",level=60,icon="Interface\\Icons\\Ability_Druid_FerociousBite",school="Feral Combat",requiredIds={22829}},
 		{id=45967,name="Wrath",subText="Rank 9",level=60,icon="Interface\\Icons\\Spell_Nature_AbolishMagic",school="Balance",requiredIds={9912}},
 		{id=51397,name="Efflorescence",subText="Passive",level=60,icon="Interface\\Icons\\Spell_Nature_Preservation",school="Restoration"},
-		{id=51452,name="Barkskin (Feral)",subText="Rank 3",level=60,icon="Interface\\Icons\\Spell_Nature_StoneClawTotem",school="Feral Combat",requiredIds={51451}}
+		{id=51452,name="Barkskin (Feral)",subText="Rank 3",level=60,icon="Interface\\Icons\\Spell_Nature_StoneClawTotem",school="Feral Combat",requiredIds={51451}},
+		{id=45969,name="Shred",subText="Rank 6",level=60,icon="Interface\\Icons\\Spell_Shadow_VampiricAura",school="Feral Combat",requiredIds={9830}}
 	}
 }

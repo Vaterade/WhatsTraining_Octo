@@ -213,8 +213,7 @@ ClassSpellsByLevel["WARRIOR"] = {
 	},
 	[58] = {
 		{id=11581,name="Thunder Clap",subText="Rank 6",level=58,icon="Interface\\Icons\\Spell_Nature_ThunderClap",school="Arms",requiredIds={11580}},
-		{id=11597,name="Sunder Armor",subText="Rank 5",level=58,icon="Interface\\Icons\\Ability_Warrior_Sunder",school="Protection",requiredIds={11596}},
-		{id=6554,name="zzOLD Pummel",subText="Rank 2",level=58,icon="Interface\\Icons\\INV_Gauntlets_04",school="Fury"}
+		{id=11597,name="Sunder Armor",subText="Rank 5",level=58,icon="Interface\\Icons\\Ability_Warrior_Sunder",school="Protection",requiredIds={11596}}
 	},
 	[60] = {
 		{id=11585,name="Overpower",subText="Rank 4",level=60,icon="Interface\\Icons\\Ability_MeleeDamage",school="Arms",requiredIds={11584}},

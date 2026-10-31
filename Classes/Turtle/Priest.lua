@@ -120,8 +120,7 @@ ClassSpellsByLevel["PRIEST"] = {
 		{id=19271,name="Feedback",subText="Rank 2",level=30,icon="Interface\\Icons\\Spell_Shadow_RitualOfSacrifice",races={"HUMAN"},school="Discipline",requiredIds={13896}},
 		{id=19282,name="Hex of Weakness",subText="Rank 3",level=30,icon="Interface\\Icons\\Spell_Shadow_FingerOfDeath",races={"TROLL"},school="Shadow Magic",requiredIds={19281}},
 		{id=19289,name="Elune's Grace",subText="Rank 2",level=30,icon="Interface\\Icons\\Spell_Holy_ElunesGrace",races={"NIGHTELF"},school="Discipline",requiredIds={2651}},
-		{id=724,name="Lightwell",subText="Rank 1",level=30,icon="Interface\\Icons\\Spell_Holy_SummonLightwell",school="Holy"},
-		{id=7001,name="Lightwell Renew",subText="Rank 1",level=30,icon="Interface\\Icons\\Spell_Holy_SummonLightwell",school="Holy"},
+		{id=724,name="Lightwell",subText="",level=30,icon="Interface\\Icons\\Spell_Holy_SummonLightwell",school="Holy"},
 		{id=45555,name="Pain Spike",subText="Rank 1",level=30,icon="Interface\\Icons\\Spell_Shadow_PainSpike",school="Shadow Magic"}
 	},
 	[32] = {
@@ -172,8 +171,6 @@ ClassSpellsByLevel["PRIEST"] = {
 		{id=19273,name="Feedback",subText="Rank 3",level=40,icon="Interface\\Icons\\Spell_Shadow_RitualOfSacrifice",races={"HUMAN"},school="Discipline",requiredIds={19271}},
 		{id=19283,name="Hex of Weakness",subText="Rank 4",level=40,icon="Interface\\Icons\\Spell_Shadow_FingerOfDeath",races={"TROLL"},school="Shadow Magic",requiredIds={19282}},
 		{id=19291,name="Elune's Grace",subText="Rank 3",level=40,icon="Interface\\Icons\\Spell_Holy_ElunesGrace",races={"NIGHTELF"},school="Discipline",requiredIds={19289}},
-		{id=10060,name="Power Infusion",subText="",level=40,icon="Interface\\Icons\\Spell_Holy_PowerInfusion",school="Discipline"},
-		{id=27870,name="Lightwell",subText="Rank 2",level=40,icon="Interface\\Icons\\Spell_Holy_SummonLightwell",school="Holy",requiredIds={724}},
 		{id=45563,name="Champion's Grace",subText="",level=40,icon="Interface\\Icons\\Spell_Holy_ChampionsGrace",school="Holy"},
 		{id=57701,name="Pain Spike",subText="Rank 2",level=40,icon="Interface\\Icons\\Spell_Shadow_PainSpike",school="Shadow Magic",requiredIds={45555}}
 	},
@@ -225,7 +222,6 @@ ClassSpellsByLevel["PRIEST"] = {
 		{id=19284,name="Hex of Weakness",subText="Rank 5",level=50,icon="Interface\\Icons\\Spell_Shadow_FingerOfDeath",races={"TROLL"},school="Shadow Magic",requiredIds={19283}},
 		{id=19292,name="Elune's Grace",subText="Rank 4",level=50,icon="Interface\\Icons\\Spell_Holy_ElunesGrace",races={"NIGHTELF"},school="Discipline",requiredIds={19291}},
 		{id=19304,name="Starshards",subText="Rank 6",level=50,icon="Interface\\Icons\\Spell_Arcane_StarFire",races={"NIGHTELF"},school="Discipline",requiredIds={19303}},
-		{id=27871,name="Lightwell",subText="Rank 3",level=50,icon="Interface\\Icons\\Spell_Holy_SummonLightwell",school="Holy",requiredIds={27870}},
 		{id=45565,name="Empower Champion",subText="Rank 1",level=50,icon="Interface\\Icons\\Spell_Holy_EmpowerChampion",school="Holy"},
 		{id=57704,name="Pain Spike",subText="Rank 3",level=50,icon="Interface\\Icons\\Spell_Shadow_PainSpike",school="Shadow Magic",requiredIds={57701}},
 		{id=46045,name="Sun's Embrace",subText="Rank 3",level=50,icon="Interface\\Icons\\Spell_Holy_HolyProtection",races={"HIGHELF"},school="Holy",requiredIds={46044}}
@@ -289,7 +285,6 @@ ClassSpellsByLevel["PRIEST"] = {
 		{id=52646,name="Searing Shot",subText="Rank 5",level=60,icon="Interface\\Icons\\Ability_SearingArrow",races={"NIGHTELF"},school="Discipline",requiredIds={52644}},
 		{id=57707,name="Pain Spike",subText="Rank 4",level=60,icon="Interface\\Icons\\Spell_Shadow_PainSpike",school="Shadow Magic",requiredIds={57704}},
 		{id=46046,name="Sun's Embrace",subText="Rank 4",level=60,icon="Interface\\Icons\\Spell_Holy_HolyProtection",races={"HIGHELF"},school="Holy",requiredIds={46045}},
-		{id=45968,name="Smite",subText="Rank 9",level=60,icon="Interface\\Icons\\Spell_Holy_HolySmite",school="Holy",requiredIds={10934}},
-		{id=51458,name="Lightwell",subText="Rank 4",level=60,icon="Interface\\Icons\\Spell_Holy_SummonLightwell",school="Holy",requiredIds={27871}}
+		{id=45968,name="Smite",subText="Rank 9",level=60,icon="Interface\\Icons\\Spell_Holy_HolySmite",school="Holy",requiredIds={10934}}
 	}
 }

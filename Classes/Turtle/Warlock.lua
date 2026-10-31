@@ -85,7 +85,6 @@ ClassSpellsByLevel["WARLOCK"] = {
 		{id=1086,name="Demon Armor",subText="Rank 4",level=30,icon="Interface\\Icons\\Spell_Shadow_RagingScream",school="Demonology",requiredIds={706}},
 		{id=2941,name="Immolate",subText="Rank 4",level=30,icon="Interface\\Icons\\Spell_Fire_Immolation",school="Destruction",requiredIds={1094}},
 		{id=1949,name="Hellfire",subText="Rank 1",level=30,icon="Interface\\Icons\\Spell_Fire_Incinerate",school="Destruction"},
-		{id=5857,name="Hellfire Effect",subText="Rank 1",level=30,icon="Interface\\Icons\\Spell_Fire_Incinerate",school="Destruction"},
 		{id=6353,name="Soul Fire",subText="Rank 1",level=30,icon="Interface\\Icons\\Spell_Fire_Fireball02",school="Destruction"},
 		{id=709,name="Drain Life",subText="Rank 3",level=30,icon="Interface\\Icons\\Spell_Shadow_LifeDrain02",school="Affliction",requiredIds={699}},
 		{id=691,name="Summon Felhunter",subText="Summon",level=30,icon="Interface\\Icons\\Spell_Shadow_SummonFelHunter",school="Demonology"},
@@ -124,7 +123,6 @@ ClassSpellsByLevel["WARLOCK"] = {
 		{id=5784,name="Summon Felsteed",subText="Summon",level=40,icon="Interface\\Icons\\Spell_Nature_Swiftness",school="Demonology"},
 		{id=11665,name="Immolate",subText="Rank 5",level=40,icon="Interface\\Icons\\Spell_Fire_Immolation",school="Destruction",requiredIds={2941}},
 		{id=5484,name="Howl of Terror",subText="Rank 1",level=40,icon="Interface\\Icons\\Spell_Shadow_DeathScream",school="Affliction"},
-		{id=18220,name="Dark Pact",subText="Rank 1",level=40,icon="Interface\\Icons\\Spell_Shadow_DarkRitual",school="Affliction"},
 		{id=20755,name="Create Soulstone",subText="",level=40,icon="Interface\\Icons\\Spell_Shadow_SoulGem",school="Demonology"},
 		{id=1941,name="Mana Funnel",subText="Rank 1",level=40,icon="Interface\\Icons\\Spell_Shadow_UnsummonBuilding",school="Demonology"},
 		{id=45910,name="Mana Funnel",subText="Rank 1",level=40,icon="Interface\\Icons\\Spell_Shadow_UnsummonBuilding",school="Demonology"}
@@ -132,7 +130,6 @@ ClassSpellsByLevel["WARLOCK"] = {
 	[42] = {
 		{id=7659,name="Curse of Recklessness",subText="Rank 3",level=42,icon="Interface\\Icons\\Spell_Shadow_UnholyStrength",school="Affliction",requiredIds={7658}},
 		{id=11683,name="Hellfire",subText="Rank 2",level=42,icon="Interface\\Icons\\Spell_Fire_Incinerate",school="Destruction",requiredIds={1949}},
-		{id=11681,name="Hellfire Effect",subText="Rank 2",level=42,icon="Interface\\Icons\\Spell_Fire_Incinerate",school="Destruction",requiredIds={5857}},
 		{id=11739,name="Shadow Ward",subText="Rank 2",level=42,icon="Interface\\Icons\\Spell_Shadow_AntiShadow",school="Demonology",requiredIds={6229}},
 		{id=6789,name="Death Coil",subText="Rank 1",level=42,icon="Interface\\Icons\\Spell_Shadow_DeathCoil",school="Affliction"},
 		{id=17921,name="Searing Pain",subText="Rank 4",level=42,icon="Interface\\Icons\\Spell_Fire_SoulBurn",school="Destruction",requiredIds={17920}},
@@ -168,7 +165,6 @@ ClassSpellsByLevel["WARLOCK"] = {
 		{id=17922,name="Searing Pain",subText="Rank 5",level=50,icon="Interface\\Icons\\Spell_Fire_SoulBurn",school="Destruction",requiredIds={17921}},
 		{id=17925,name="Death Coil",subText="Rank 2",level=50,icon="Interface\\Icons\\Spell_Shadow_DeathCoil",school="Affliction",requiredIds={6789}},
 		{id=1122,name="Inferno",subText="Summon",level=50,icon="Interface\\Icons\\Spell_Shadow_SummonInfernal",school="Demonology"},
-		{id=18937,name="Dark Pact",subText="Rank 2",level=50,icon="Interface\\Icons\\Spell_Shadow_DarkRitual",school="Affliction",requiredIds={18220}},
 		{id=20756,name="Create Soulstone (Greater)",subText="",level=50,icon="Interface\\Icons\\Spell_Shadow_SoulGem",school="Demonology"},
 		{id=45911,name="Mana Funnel",subText="Rank 2",level=50,icon="Interface\\Icons\\Spell_Shadow_UnsummonBuilding",school="Demonology",requiredIds={45910}}
 	},
@@ -181,7 +177,6 @@ ClassSpellsByLevel["WARLOCK"] = {
 	},
 	[54] = {
 		{id=11684,name="Hellfire",subText="Rank 3",level=54,icon="Interface\\Icons\\Spell_Fire_Incinerate",school="Destruction",requiredIds={11683}},
-		{id=11682,name="Hellfire Effect",subText="Rank 3",level=54,icon="Interface\\Icons\\Spell_Fire_Incinerate",school="Destruction",requiredIds={11681}},
 		{id=17928,name="Howl of Terror",subText="Rank 2",level=54,icon="Interface\\Icons\\Spell_Shadow_DeathScream",school="Affliction",requiredIds={5484}},
 		{id=11672,name="Corruption",subText="Rank 6",level=54,icon="Interface\\Icons\\Spell_Shadow_AbominationExplosion",school="Affliction",requiredIds={11671}},
 		{id=11700,name="Drain Life",subText="Rank 6",level=54,icon="Interface\\Icons\\Spell_Shadow_LifeDrain02",school="Affliction",requiredIds={11699}},
@@ -212,8 +207,6 @@ ClassSpellsByLevel["WARLOCK"] = {
 		{id=17728,name="Create Spellstone (Major)",subText="",level=60,icon="Interface\\Icons\\INV_Misc_Gem_Sapphire_01",school="Demonology"},
 		{id=603,name="Curse of Doom",subText="",level=60,icon="Interface\\Icons\\Spell_Shadow_AuraOfDarkness",school="Affliction"},
 		{id=18540,name="Ritual of Doom",subText="",level=60,icon="Interface\\Icons\\Spell_Shadow_AntiMagicShell",school="Demonology"},
-		{id=18541,name="Ritual of Doom Effect",subText="",level=60,icon="Interface\\Icons\\Spell_Arcane_PortalDarnassus",school="Demonology"},
-		{id=18938,name="Dark Pact",subText="Rank 3",level=60,icon="Interface\\Icons\\Spell_Shadow_DarkRitual",school="Affliction",requiredIds={18937}},
 		{id=20757,name="Create Soulstone (Major)",subText="",level=60,icon="Interface\\Icons\\Spell_Shadow_SoulGem",school="Demonology"},
 		{id=23161,name="Summon Dreadsteed",subText="Summon",level=60,icon="Interface\\Icons\\Ability_Mount_Dreadsteed",school="Demonology"},
 		{id=25307,name="Shadow Bolt",subText="Rank 10",level=60,icon="Interface\\Icons\\Spell_Shadow_ShadowBolt",school="Destruction",requiredIds={11661}},

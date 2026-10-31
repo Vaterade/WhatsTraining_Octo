@@ -30,13 +30,29 @@ Explicit exceptions and limits:
 
 - Dire Bear Form replaces Bear Form; this is an intentional cross-name
   override, not a ranked chain.
-- `zzOLD Pummel` (6554) remains an isolated obsolete record. It is not
-  treated as rank 2 of the current, unranked Pummel (6552).
 - This checks the addon data, not live server trainer offerings. The client
   also contains old or deprecated spell records, so their presence alone
   does not establish that a trainer currently teaches them.
-- The client comparison separately found older name/rank metadata for
-  Aspect of the Fox (45651), Lightwell (724), Lightwell Renew (7001), and
-  deprecated Lightwell ranks (27870/27871/51458). These are not rank-link
-  errors and were left unchanged in this audit. They require a separate
-  review of the server's current spell offerings.
+
+## October 31, 2026 cleanup
+
+The audit now passes for 1,406 spell records, 253 ranked spell families, 945
+prerequisite links, and 211 overwritten-rank lists. Entries were compared with
+the client's `Spell.dbc`, `SkillLineAbility.dbc` and `Talent.dbc`.
+
+- Removed effects of other spells: Immolation and Explosive Trap Effect,
+  Pounce Bleed, Hellfire Effect, Ritual of Doom Effect, Moonkin Aura, and
+  Judgement of the Crusader, Wisdom, Justice and Light.
+- Removed talent spell effects: Holy Shock (25912/25911/25902) and Eye for an
+  Eye (25997).
+- Removed spells whose first rank has no teaching spell or talent of that name
+  in the client: Wyvern Sting, Counterattack, Power Infusion, Mana Tide Totem
+  and Dark Pact. Their later ranks went too, as with other talent spells. The
+  server's trainer lists aren't in the client, so this one is inferred.
+- Removed old records: `zzOLD Pummel` (6554), Lightwell Renew (7001) and the
+  deprecated Lightwell ranks (27870/27871/51458). Lightwell (724) is now
+  unranked, as in the client.
+- 45651 is now Aspect of the Viper at level 56, not Aspect of the Fox at level
+  4. It keeps the old icon, which wasn't checked against the client.
+- Moved Expose Armor ranks 1–5 to levels 10/22/32/42/52 and Shred rank 6 to
+  level 60, matching `BaseLevel` in the client.
