@@ -1,6 +1,6 @@
 # Spell chain audit
 
-Run `node WhatsTraining_Turtle/tests/check-chains.cjs` from the AddOns directory.
+Run `node WhatsTraining_Octo/tests/check-chains.cjs` from the AddOns directory.
 The test reads the class data directly and checks all nine classes for missing
 ranks, prerequisite cycles, links to anything other than the preceding rank,
 level and racial conflicts, and incomplete or invalid overwritten-rank lists.

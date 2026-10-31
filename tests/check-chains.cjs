@@ -1,4 +1,4 @@
-// Run from any directory: node WhatsTraining_Turtle/tests/check-chains.cjs
+// Run from any directory: node WhatsTraining_Octo/tests/check-chains.cjs
 // Class data uses one spell record per line; fail if that format changes.
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
