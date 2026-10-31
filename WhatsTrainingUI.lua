@@ -67,7 +67,20 @@ function WhatsTrainingUI:HideFrame()
   end
 end
 
+-- Other addons can move the spellbook to a higher strata (Aegis_Exchange lifts
+-- it to HIGH), and a child with a lower strata draws behind it. Rows are created
+-- from this frame, so they inherit whatever it holds.
+local function ApplyLayer(frame, strata, level)
+  frame:SetFrameStrata(strata)
+  frame:SetFrameLevel(level)
+  for _, child in ipairs({ frame:GetChildren() }) do
+    ApplyLayer(child, strata, level + 1)
+  end
+end
+
 function WhatsTrainingUI:ShowFrame()
+  ApplyLayer(self.frame, SpellBookFrame:GetFrameStrata(), SpellBookFrame:GetFrameLevel() + 5)
+
   -- Uncheck all spell skill tabs
   local i = 1
   while getglobal("SpellBookSkillLineTab"..i) do
