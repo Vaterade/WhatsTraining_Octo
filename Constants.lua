@@ -4,6 +4,7 @@ local COMINGSOON_FONT_COLOR_CODE = "|cff82c5ff"
 local MISSINGTALENT_FONT_COLOR_CODE = "|cffffffff"
 local ORANGE_FONT_COLOR_CODE = "|cffff8040"
 local PET_FONT_COLOR_CODE = "|cffffffff"
+local NOTOFFERED_FONT_COLOR_CODE = "|cffffff99"
 
 
 ---@enum SpellCategories
@@ -12,6 +13,7 @@ SpellCategories = {
   MISSING_REQS = "missingReqs",
   NEXT_LEVEL = "nextLevel",
   NOT_LEVEL = "notLevel",
+  NOT_OFFERED = "notOffered",
   MISSING_TALENT = "missingTalent",
   IGNORED = "ignored",
   KNOWN = "known",
@@ -45,6 +47,10 @@ SpellCategoryHeaders = { {
   name = "Not yet available",
   color = RED_FONT_COLOR_CODE,
   key = SpellCategories.NOT_LEVEL
+}, {
+  name = "Not seen at a trainer",
+  color = NOTOFFERED_FONT_COLOR_CODE,
+  key = SpellCategories.NOT_OFFERED
 }, {
   name = "Pet Abilities",
   color = PET_FONT_COLOR_CODE,

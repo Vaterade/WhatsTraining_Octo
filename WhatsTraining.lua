@@ -20,6 +20,7 @@ function WhatsTraining:Initialise()
     PlayerData:SetOverriddenSpells(overridenSpells)
   end
 
+  PlayerData:ApplyTrainerSpells()
   PlayerData:GetKnownSpells()
   PlayerData:GetAvailableSpells()
 
@@ -45,7 +46,17 @@ end
 
 local function OnEvent()
   if event == "PLAYER_ENTERING_WORLD" then
-    WhatsTraining:Initialise()
+    -- This fires on every loading screen, but the frames must only be built once
+    if WhatsTraining.initialized then
+      WhatsTraining:Refresh()
+    else
+      WhatsTraining:Initialise()
+    end
+  elseif event == "TRAINER_SHOW" then
+    if WhatsTraining.initialized and TrainerData:Scan() then
+      PlayerData:ApplyTrainerSpells()
+      WhatsTraining:Refresh()
+    end
   elseif event == "PLAYER_LEVEL_UP" then
     WhatsTraining:Refresh()
   elseif event == "SPELLS_CHANGED" then
@@ -57,4 +68,5 @@ local f = CreateFrame("Frame")
 f:RegisterEvent("PLAYER_ENTERING_WORLD")
 f:RegisterEvent("PLAYER_LEVEL_UP")
 f:RegisterEvent("SPELLS_CHANGED")
+f:RegisterEvent("TRAINER_SHOW")
 f:SetScript("OnEvent", OnEvent)

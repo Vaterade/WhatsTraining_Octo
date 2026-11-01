@@ -28,22 +28,63 @@ function Utils.TableHasValue(tab, val)
   return false
 end
 
+local RACE_ALIASES = { SCOURGE = "UNDEAD", BLOODELF = "HIGHELF" }
+
 --- Returns the table of spells filtered by the given race
 ---@param spellsByLevel SpellsByLevel
 ---@param playerRace string
 ---@return SpellsByLevel
 function Utils.FilterByRace(spellsByLevel, playerRace)
+  -- UnitRace gives "Gnome", "NightElf" and "Scourge"; the class data uses "GNOME", "NIGHTELF" and "UNDEAD"
+  local race = RACE_ALIASES[strupper(playerRace)] or strupper(playerRace)
+
   return filter(spellsByLevel, function(spell)
     if (spell.race == nil and spell.races == nil) then
       return true
     end
 
     if (spell.races == nil) then
-      return spell.race == playerRace
+      return strupper(spell.race) == race
     end
 
-    return Utils.TableHasValue(spell.races, playerRace)
+    for _, allowedRace in ipairs(spell.races) do
+      if strupper(allowedRace) == race then
+        return true
+      end
+    end
+    return false
   end)
+end
+
+--- Removes spells that the client has no record of. Needs ClassicAPI; without it nothing is removed.
+---@param spellsByLevel SpellsByLevel
+---@return SpellsByLevel
+function Utils.FilterMissingFromClient(spellsByLevel)
+  if not (C_Spell and C_Spell.DoesSpellExist) then
+    return spellsByLevel
+  end
+
+  return filter(spellsByLevel, function(spell)
+    return C_Spell.DoesSpellExist(spell.id) == true
+  end)
+end
+
+--- Replaces a spell's name, rank, icon and level with the client's. Needs ClassicAPI;
+--- without it, or where the client has no value, the class data stays.
+---@param spell Spell
+function Utils.ApplyClientSpellData(spell)
+  if not (C_Spell and C_SpellBook) then
+    return
+  end
+
+  spell.name = C_Spell.GetSpellName(spell.id) or spell.name
+  spell.subText = C_Spell.GetSpellSubtext(spell.id) or ""
+  spell.icon = C_Spell.GetSpellTexture(spell.id) or spell.icon
+
+  local level = C_SpellBook.GetSpellLevelLearned(spell.id)
+  if level and level > 0 then
+    spell.level = level
+  end
 end
 
 --- Returns the table of spells that has level requirements less than or equal the given level

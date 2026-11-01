@@ -3,12 +3,14 @@
 ## Version: 1.1.0
 ## Author: Sveng, Turtle Port by spawnedc
 ## Notes: Shows you what spells are available at your class trainer
+## SavedVariables: WhatsTrainingDB
 
 Environment.lua
 Constants.lua
 Utils.lua
 SpellsByLevel.lua
 PlayerData.lua
+TrainerData.lua
 
 Classes\Turtle\Druid.lua
 Classes\Turtle\Hunter.lua

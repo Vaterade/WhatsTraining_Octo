@@ -16,6 +16,7 @@ setfenv(1, WhatsTraining)
 ---@field race? string The single race that this spell is allowed to be used
 ---@field races? integer[] The list of races that this spell is allowed to be used
 ---@field faction? string The faction requirement for the spell
+---@field requiredKey? string Name and rank of the earlier rank needed, for spells only trainers list
 
 PlayerData = {
   ---@type string
@@ -34,10 +35,16 @@ PlayerData = {
   spellsByNameAndRank = {},
   ---@type table<integer>
   knownSpellIds = {},
+  ---@type table<string, boolean> Name and rank of everything in the spellbook
+  knownKeys = {},
   ---@type table<SpellCategories, Spell[]>
   spellsByCategory = {},
   ---@type table<number, table<number, number>>
-  overridenSpells = {}
+  overridenSpells = {},
+  ---@type table<string, table>? What trainers offer this class and race, nil until one is seen
+  offeredSpells = nil,
+  ---@type integer IDs for spells only trainers list; the trainer window doesn't give real ones
+  nextTrainerSpellId = -1
 }
 
 function PlayerData:SayHello()
@@ -72,10 +79,11 @@ end
 ---Sets the spells by level for the player
 ---@param spellsByLevel SpellsByLevel
 function PlayerData:SetSpellsByLevel(spellsByLevel)
-  self.spellsByLevel = Utils.FilterByRace(spellsByLevel, self.race)
+  self.spellsByLevel = Utils.FilterMissingFromClient(Utils.FilterByRace(spellsByLevel, self.race))
 
   for _, spells in pairs(self.spellsByLevel) do
     for _, spell in ipairs(spells) do
+      Utils.ApplyClientSpellData(spell)
       self.spellsById[spell.id] = spell
 
       local spellNameKey = Utils.getSpellWithRankKey(spell.name, spell.subText)
@@ -99,9 +107,69 @@ function PlayerData:SetOverriddenSpells(overridenSpells)
   self.overridenSpells = overridenSpells
 end
 
+---Applies the saved trainer lists: their levels replace the class data's, and spells
+---the class data doesn't have are added
+function PlayerData:ApplyTrainerSpells()
+  self.offeredSpells = TrainerData:Get(self.class, self.race)
+  if not self.offeredSpells then
+    return
+  end
+
+  for key, row in pairs(self.offeredSpells) do
+    local level = row.level
+    if not level or level < 1 then
+      level = nil
+    end
+
+    local spells = self.spellsByNameAndRank[key]
+    if spells then
+      for _, spell in ipairs(spells) do
+        spell.level = level or spell.level
+      end
+    else
+      local spell = {
+        id = self.nextTrainerSpellId,
+        name = row.name,
+        subText = row.subText,
+        level = level or 1,
+        icon = row.icon,
+        school = row.school or "",
+      }
+      -- Trainers list later ranks of talent spells to everyone. Rank 1 comes from the talent.
+      local _, _, rank = string.find(row.subText, "^Rank (%d+)$")
+      if rank and tonumber(rank) > 1 then
+        spell.requiredKey = Utils.getSpellWithRankKey(row.name, "Rank " .. (tonumber(rank) - 1))
+      end
+      self.nextTrainerSpellId = self.nextTrainerSpellId - 1
+
+      self.spellsByLevel[spell.level] = self.spellsByLevel[spell.level] or {}
+      tinsert(self.spellsByLevel[spell.level], spell)
+      self.spellsById[spell.id] = spell
+      self.spellsByNameAndRank[key] = { spell }
+    end
+  end
+end
+
+---Marks a spell as known, along with the earlier ranks it replaces
+---@param spell Spell
+function PlayerData:MarkSpellKnown(spell)
+  tinsert(self.knownSpellIds, spell.id)
+
+  local overridenSpellIds = self.overridenSpells[spell.id]
+  if (overridenSpellIds) then
+    for _, spellId in ipairs(overridenSpellIds) do
+      tinsert(self.knownSpellIds, spellId)
+    end
+  end
+end
+
 function PlayerData:GetKnownSpells()
   -- Reset the known spells every time we call this function
   self.knownSpellIds = {}
+  self.knownKeys = {}
+
+  -- The spellbook lists every rank, and matching by name also catches spells
+  -- learned under a different ID than the one in the class data (e.g. Dampen Magic)
   local i = 1
   while true do
     local name, rank = GetSpellName(i, BOOKTYPE_SPELL)
@@ -110,24 +178,28 @@ function PlayerData:GetKnownSpells()
     end
 
     local spellNameKey = Utils.getSpellWithRankKey(name, rank)
+    self.knownKeys[spellNameKey] = true
     local spells = self.spellsByNameAndRank[spellNameKey]
 
     if (spells) then
       -- Mark all spells with this name/rank as known (handles duplicates like Dampen Magic)
       for _, spell in ipairs(spells) do
         -- Utils.log(name .. " (" .. rank .. ") - [" .. spell.id .. "]")
-        tinsert(self.knownSpellIds, spell.id)
-
-        local overridenSpellIds = self.overridenSpells[spell.id]
-        if (overridenSpellIds) then
-          for _, spellId in ipairs(overridenSpellIds) do
-            tinsert(self.knownSpellIds, spellId)
-          end
-        end
+        self:MarkSpellKnown(spell)
       end
     end
 
     i = i + 1
+  end
+
+  -- ClassicAPI also knows spells that have no spellbook button, such as passives.
+  -- It only reports a spell's current rank, so it can't replace the spellbook scan.
+  if IsPlayerSpell then
+    for id, spell in pairs(self.spellsById) do
+      if id > 0 and IsPlayerSpell(id) then
+        self:MarkSpellKnown(spell)
+      end
+    end
   end
 end
 
@@ -155,6 +227,8 @@ function PlayerData:GetAvailableSpells()
   ---@type Spell[]
   local comingSoon = {}
   ---@type Spell[]
+  local notOffered = {}
+  ---@type Spell[]
   local notAvailable = {}
   ---@type Spell[]
   local knownSpells = {}
@@ -168,6 +242,10 @@ function PlayerData:GetAvailableSpells()
           else
             tinsert(notAvailable, spell)
           end
+        elseif self.offeredSpells and not self.offeredSpells[Utils.getSpellWithRankKey(spell.name, spell.subText)] then
+          tinsert(notOffered, spell)
+        elseif spell.requiredKey and not self.knownKeys[spell.requiredKey] then
+          tinsert(missingTalentRequirement, spell)
         else
           -- Check for talents
           if spell.requiredTalent ~= nil and not PlayerData:IsTalentKnown(spell.name, spell.requiredTalent.tabIndex) then
@@ -188,6 +266,7 @@ function PlayerData:GetAvailableSpells()
   table.sort(missingRequirements, function(a, b) return a.level < b.level end)
   table.sort(comingSoon, function(a, b) return a.level < b.level end)
   table.sort(notAvailable, function(a, b) return a.level < b.level end)
+  table.sort(notOffered, function(a, b) return a.level < b.level end)
   table.sort(knownSpells, function(a, b) return a.level < b.level end)
   table.sort(availableSpells, function(a, b)
     if a.school == b.school and a.level == b.level then
@@ -204,6 +283,7 @@ function PlayerData:GetAvailableSpells()
   self.spellsByCategory[SpellCategories.AVAILABLE] = availableSpells
   self.spellsByCategory[SpellCategories.NEXT_LEVEL] = comingSoon
   self.spellsByCategory[SpellCategories.NOT_LEVEL] = notAvailable
+  self.spellsByCategory[SpellCategories.NOT_OFFERED] = notOffered
   self.spellsByCategory[SpellCategories.KNOWN] = knownSpells
 end
 
