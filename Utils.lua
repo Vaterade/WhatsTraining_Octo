@@ -142,6 +142,25 @@ function Utils.getSpellWithRankKey(name, rank)
   return spellNameKey
 end
 
+---Looks a spell up by name and rank. Trainers and the spellbook don't always agree on
+---whether a spell has a rank: the Rogue trainer lists Pick Pocket as Rank 1, the spellbook
+---shows no rank. So "Rank 1" and no rank are treated as the same.
+---@param t table Table keyed by getSpellWithRankKey
+---@param name string
+---@param rank string|nil
+---@return any
+function Utils.findBySpellKey(t, name, rank)
+  local value = t[Utils.getSpellWithRankKey(name, rank)]
+  if value ~= nil then
+    return value
+  end
+  if rank == "Rank 1" then
+    return t[name]
+  elseif rank == nil or rank == "" then
+    return t[name .. "-Rank 1"]
+  end
+end
+
 ---Returns the length of a table
 ---@param t table
 ---@return integer

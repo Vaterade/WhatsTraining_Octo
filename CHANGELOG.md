@@ -6,6 +6,13 @@ the version in `WhatsTraining_Octo.toc` into the GitHub release notes, so write 
 Versions follow [semantic versioning](https://semver.org/): a fix raises the last number, a
 new feature the middle one. While the first number is 0 the addon isn't considered stable yet.
 
+## [1.1.1] - 2026-11-16
+
+### Fixed
+- Pick Pocket no longer shows as available after you've learned it. The Rogue trainer lists it
+  as Rank 1 while the spellbook shows no rank, so the two weren't matched. A rank of 1 and no
+  rank now count as the same everywhere.
+
 ## [1.1.0] - 2026-11-06
 
 The first OctoWoW release, forked from
@@ -32,4 +39,5 @@ versions are in `changes.log` and that repository's history.
 - Grace of the Sunwell only shows for High Elves.
 - Later ranks of talent spells need the previous rank, instead of showing as missing a talent.
 
+[1.1.1]: https://github.com/Vaterade/WhatsTraining_Octo/releases/tag/v1.1.1
 [1.1.0]: https://github.com/Vaterade/WhatsTraining_Octo/releases/tag/v1.1.0

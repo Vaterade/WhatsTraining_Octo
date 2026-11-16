@@ -79,7 +79,7 @@ function TrainerData:Scan()
   local rows = ReadServices()
   local matches = 0
   for _, row in ipairs(rows) do
-    if PlayerData.spellsByNameAndRank[Utils.getSpellWithRankKey(row.name, row.subText)] then
+    if Utils.findBySpellKey(PlayerData.spellsByNameAndRank, row.name, row.subText) then
       matches = matches + 1
     end
   end

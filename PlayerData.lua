@@ -121,7 +121,7 @@ function PlayerData:ApplyTrainerSpells()
       level = nil
     end
 
-    local spells = self.spellsByNameAndRank[key]
+    local spells = Utils.findBySpellKey(self.spellsByNameAndRank, row.name, row.subText)
     if spells then
       for _, spell in ipairs(spells) do
         spell.level = level or spell.level
@@ -177,9 +177,13 @@ function PlayerData:GetKnownSpells()
       break
     end
 
-    local spellNameKey = Utils.getSpellWithRankKey(name, rank)
-    self.knownKeys[spellNameKey] = true
-    local spells = self.spellsByNameAndRank[spellNameKey]
+    self.knownKeys[Utils.getSpellWithRankKey(name, rank)] = true
+    if rank == "" or rank == nil then
+      self.knownKeys[name .. "-Rank 1"] = true
+    elseif rank == "Rank 1" then
+      self.knownKeys[name] = true
+    end
+    local spells = Utils.findBySpellKey(self.spellsByNameAndRank, name, rank)
 
     if (spells) then
       -- Mark all spells with this name/rank as known (handles duplicates like Dampen Magic)
@@ -242,7 +246,7 @@ function PlayerData:GetAvailableSpells()
           else
             tinsert(notAvailable, spell)
           end
-        elseif self.offeredSpells and not self.offeredSpells[Utils.getSpellWithRankKey(spell.name, spell.subText)] then
+        elseif self.offeredSpells and not Utils.findBySpellKey(self.offeredSpells, spell.name, spell.subText) then
           tinsert(notOffered, spell)
         elseif spell.requiredKey and not self.knownKeys[spell.requiredKey] then
           tinsert(missingTalentRequirement, spell)
